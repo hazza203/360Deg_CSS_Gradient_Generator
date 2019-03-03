@@ -32,7 +32,6 @@ dragElement(mouse);
 //When mouse dragged, get the element and the cursor postion (x,y)
 function dragElement(elmnt) {
 
-  elmnt.classList.toggle("mouse-transition");
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
   if (document.getElementById(elmnt.id + "header")) {
     // if present, the header is where you move the DIV from:
@@ -43,6 +42,7 @@ function dragElement(elmnt) {
   }
 
   function dragMouseDown(e) {
+    elmnt.classList.toggle("mouse-transition");
     e = e || window.event;
     e.preventDefault();
     // get the mouse cursor position at startup:
