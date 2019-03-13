@@ -1,0 +1,5 @@
+# Ignore the Node_Modules(lodash) Folder. Build it yourself by running 'npm install'
+node_modules/
+
+#Ignore the bundle.js file, build yourself by running 'npm run build'
+bundle.js

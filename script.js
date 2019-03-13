@@ -1,3 +1,7 @@
+var _ = require('lodash');
+var array = [1,2,3,4,5,6,7,8];
+console.log('answer: ', _.without(array, 2));
+
 var output = document.querySelector("h3");
 var color1 = document.querySelector(".color1");
 var color2 = document.querySelector(".color2");
@@ -18,7 +22,6 @@ var resizeEvent = function(){
   height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
   halfHeight = height/2;
   halfWidth = width/2;
-  console.log(halfWidth);
 }
 window.addEventListener("resize", resizeEvent);
 
@@ -95,7 +98,6 @@ function drawScreen(x, y){
     }
   }
   else {
-    console.log(x + " " + y + halfWidth + " " + halfHeight);
     a = Math.abs(halfWidth - x);
     b = Math.abs(halfHeight - y);
     c = Math.sqrt(a*a + b*b);
