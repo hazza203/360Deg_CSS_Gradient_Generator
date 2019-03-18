@@ -72,6 +72,7 @@ body.scrolled #mouse-icon {
   display: block;
   margin-left: -28px;
   position: absolute;
+  margin-top: -20px;
   left: 50%;
   text-align: center;
   font-family: 'Raleway', sans-serif;
@@ -82,10 +83,10 @@ body.scrolled #mouse-icon {
   text-transform: uppercase;
   color: rgba(0,0,0,.5);
   opacity: 1;
-  -webkit-transform: scaleX(0);
-  -moz-transform: scaleX(0);
-  -o-transform: scaleX(0);
-  transform: scaleX(0);
+  -webkit-transform: scaleX(.9);
+  -moz-transform: scaleX(.9);
+  -o-transform: scaleX(.9);
+  transform: scaleX(.9);
   -moz-transition: all 0.3s ease-in-out;
   -webkit-transition: all 0.3s ease-in-out;
   transition: all 0.3s ease-in-out;
