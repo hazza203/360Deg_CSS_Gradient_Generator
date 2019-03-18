@@ -102,33 +102,25 @@ function dragElement(elmnt) {
 //    center (original location of element) as opposed to the nearest edge of screen  
 //      e.g. all the way to the left is 100%, center is 0% and between left and center is 50%
 function drawScreen(x, y){
+  //Finding the three sides
+  let [a,b,c] = createTriangle(x,y);
+  //Calculation is slightly different for each half of the screen
   if(x > halfWidth){
-    a = Math.abs(halfHeight - y);
-    b = Math.abs(halfWidth - x);
-    c = Math.sqrt(a*a + b*b);
-    var cosA = (b*b + c*c - a*a) / (2*b*c);
-    cosA = Math.acos(cosA);
-    cosA = cosA*180/Math.PI;
-    deg = cosA;
-    pctY = (a / halfHeight) * 100;
-    pctX = (b / halfWidth) * 100;
-    pct = Math.max(pctY, pctX);
+    //Trig to find angle
+    deg = trigCosA(a,b,c);
+    // Calculating percentage 
+    pct = percentageFromCenter(a, b);
+    // The degree in linear-gradient go -180 to 180 so here we use -90 to 90
     if(y < halfHeight){
       deg = 0 - deg;
     }
   }
   else {
-    a = Math.abs(halfWidth - x);
-    b = Math.abs(halfHeight - y);
-    c = Math.sqrt(a*a + b*b);
-
-    var cosA = (b*b + c*c - a*a) / (2*b*c);
-    cosA = Math.acos(cosA);
-    cosA = cosA*180/Math.PI;
-    deg = cosA;
-    pctY = (b / halfHeight) * 100;
-    pctX = (a / halfWidth) * 100;
-    pct = Math.max(pctY, pctX);
+    //Trig to find angle
+    deg = trigCosA(b, a,c);
+    // Calculating percentage 
+    pct = percentageFromCenter(b, a);
+    // The degree in linear-gradient go -180 to 180 so here we use -180 to -90 and 90 to 180
     if(y > halfHeight){
       deg += 90;
     }
@@ -137,4 +129,24 @@ function drawScreen(x, y){
     }
   }
   colorChanged();
+}
+
+function trigCosA(a,b,c){
+  let cosA = (b*b + c*c - a*a) / (2*b*c);
+  cosA = Math.acos(cosA);
+  return cosA*180/Math.PI;
+}
+
+function percentageFromCenter(a,b){
+  let pctY = (a / halfHeight) * 100;
+  let pctX = (b / halfWidth) * 100;
+  return Math.max(pctY, pctX);
+}
+
+function createTriangle(x, y){
+    a = Math.abs(halfHeight - y);
+    b = Math.abs(halfWidth - x);
+    //Pythag to find c
+    c = Math.sqrt(a*a + b*b);
+    return[a,b,c];
 }
