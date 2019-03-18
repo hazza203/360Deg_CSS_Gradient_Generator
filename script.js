@@ -16,7 +16,7 @@ var halfWidth = width/2;
 color1.addEventListener("input", colorChanged);
 color2.addEventListener("input", colorChanged);
 
-//When window resized, adjust height and width variables.
+//When window resized, adjust client height and width variables.
 var resizeEvent = function(){
   width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
@@ -25,6 +25,7 @@ var resizeEvent = function(){
 }
 window.addEventListener("resize", resizeEvent);
 
+//Change gradient color when a new color has been selected
 function colorChanged(){
   body.style.background = `linear-gradient(${deg}deg, ${color1.value}, ${pct}%, ${color2.value})`;
   output.textContent = body.style.background + ";";
@@ -56,7 +57,8 @@ function dragElement(elmnt) {
     document.onmousemove = elementDrag;
   }
 
-  //Call the drawScreen method draw new gradient
+  // This gets called every 0.1 seconds, finds the new cursor position and draws
+  // calls the function to draw the gradient
   function elementDrag(e) {
     e = e || window.event;
     e.preventDefault();
@@ -68,6 +70,7 @@ function dragElement(elmnt) {
     // set the element's new position:
     elmnt.style.top = (pos4) + "px";
     elmnt.style.left = (pos3) + "px";
+    // Draw the background gradient with the new parameters 
     drawScreen(pos3, pos4);
   }
 
@@ -79,8 +82,25 @@ function dragElement(elmnt) {
   }
 }
 
-// Draw the gradient by calculating the gradient angle by the cursor position
-// and calculating the percentage by how far away from center the cursor is
+//This method draws the gradient by calculating two values
+// 1: Angle of gradient
+//    Using pythagorean theorem to create a triangle and then triganometry to find the angle
+//    center *
+//  angle -> | \
+//           |  \
+//           |   \
+//    side a |    \ side c
+//           |     \
+//           |______\ <- element position
+//            side b
+//    side a is calculated as the difference between center and elements y-value
+//    side b is calculated as the difference betweeen centet and elements x-value
+//    side c is calulated using pythag. c^2 = a^2 + b^2
+//    angle is calculated using trig
+// 2: Percentage of color 1 and color 2
+//    this is found by calculating how far the draggable element is away from the
+//    center (original location of element) as opposed to the nearest edge of screen  
+//      e.g. all the way to the left is 100%, center is 0% and between left and center is 50%
 function drawScreen(x, y){
   if(x > halfWidth){
     a = Math.abs(halfHeight - y);
