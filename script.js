@@ -51,7 +51,7 @@ const pickr1 = new Pickr({
             hsva: true,
             input: true,
             clear: false,
-            save: false
+            save: true,
         }
     }
 });
@@ -72,7 +72,7 @@ const pickr2 = new Pickr({
             hsva: true,
             input: true,
             clear: false,
-            save: false
+            save: true
         }
     }
 });
