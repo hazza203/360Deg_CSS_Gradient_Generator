@@ -2,32 +2,104 @@ html { height:100%; }
 
 body {
   margin: 0;
-  font: 'Raleway', sans-serif;
-  color: rgba(0,0,0,.5);
+  font-family: 'Montserrat', serif;
+  color: white;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: .5em;
-  top: 15%;
-  background: linear-gradient(to right, rgb(242, 250, 192), rgb(187,233,247));
+  background: linear-gradient(to right, rgb(85, 208, 120), rgb(0, 18, 192));
   height: 100vh;
   position:absolute; top:0; bottom:0; right:0; left:0;
 }
 
+h1, h2, h3, h4{
+  text-transform: uppercase;
+  letter-spacing: .5em;
+}
 h1 {
-  font: 600 3.5em 'Raleway', sans-serif;
-  color: rgba(0,0,0,.5);
+  font: 600 2.5em;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: .5em;
   width: 100%;
 }
 
-h3 {
-  font: 900 1em 'Raleway', sans-serif;
-  color: rgba(0,0,0,.5);
-  text-align: center;
+h4 {
+  width: 300px;
+  margin: 0 auto;
+  line-height: 1.4;
+  letter-spacing: 0.2px;
+  text-align: left;
   text-transform: none;
-  letter-spacing: 0.01em;
+}
+
+h4#code{
+    padding: 15px 8px 15px 17px;
+    font-weight: normal;
+    letter-spacing: 3px;
+    border-left: 3px solid rgba(255,255,255, 0.5);
+    border-right: 3px solid rgba(255,255,255, 0.5);
+    border-radius: 5px;
+}
+
+.pckButton{
+  background-color: white;
+  border: none;
+  border-radius: 25px;
+  text-align: center;
+  width: 100px;
+  padding: 1rem 2rem;
+  color:white;
+  -webkit-box-shadow: 5px 5px 14px 1px rgba(00,00,00,0.2);
+  box-shadow: 5px 5px 14px 1px rgba(00,00,00,0.2);
+
+}
+
+input[type="radio"] {
+  width: 35px;
+  height: 35px;
+  border-radius: 20px;
+  border: 2px solid white;
+  background-color: none;
+  -webkit-appearance: none; /*to disable the default appearance of radio button*/
+  -moz-appearance: none;
+  transition: background-color 0.5s ease-in-out;
+}
+
+input[type="radio"]:focus { /*no need, if you don't disable default appearance*/
+  outline-color: transparent; /*to remove the square border on focus*/
+}
+
+input[type="radio"]:checked { /*no need, if you don't disable default appearance*/
+  background-color: rgba(70,70,70, 0.7);
+}
+
+label span:first-of-type {
+  position: relative;
+  left: -30px;
+  font-size: 17px;
+  font-weight: bold;
+  color: white;
+}
+
+label span {
+  position: relative;
+  top: -10px;
+}
+
+.showText {
+  display: inline;
+}
+#warnMsg {
+  width: 200px;
+  font-size: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid blue;
+  border-radius: 5px;
+  color: black;
+  padding: 5px;
+  background: white;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
 }
 
 /* line 396, sass/_layouts/_header.scss */
@@ -36,11 +108,10 @@ h3 {
   height: 35px;
   display: block;
   margin: -20px 0 0 -10px;
-  border: 2px solid rgba(0,0,0,.5);
+  border: 2px solid white;
   position: absolute;
   z-index: 9;
   opacity: 1;
-  bottom: 20%;
   left: 50%;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -57,7 +128,7 @@ h3 {
 
 /* line 411, sass/_layouts/_header.scss */
 body.ready #mouse-icon {
-  opacity: .6;
+  opacity: 1;
 }
 
 /* line 415, sass/_layouts/_header.scss */
@@ -67,21 +138,19 @@ body.scrolled #mouse-icon {
 
 /* line 419, sass/_layouts/_header.scss */
 #mouse-icon::before {
-  content: 'DRAG';
-  width: 60px;
+  content: 'DRAG ME';
+  width: 80px;
   display: block;
-  margin-left: -28px;
+  margin-left: -40px;
   position: absolute;
   margin-top: -20px;
   left: 50%;
   text-align: center;
-  font-family: 'Raleway', sans-serif;
   text-transform: uppercase;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 4px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  color: rgba(0,0,0,.5);
   opacity: 1;
   -webkit-transform: scaleX(.9);
   -moz-transform: scaleX(.9);
@@ -116,7 +185,7 @@ body.scrolled #mouse-icon {
   position: absolute;
   top: 5px;
   left: 6px;
-  background: rgba(0,0,0,.5);
+  background: white;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   -o-border-radius: 3px;

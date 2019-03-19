@@ -2,20 +2,37 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:200,400,500">
     <link rel="stylesheet" href="style.css">
-    <title>Background Gradient</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.css"/>
+    <title>CSS Color Gradient</title>
   </head>
   <body id=gradient>
-    <h1>Background Gradient Generator</h1>
-    <h2>Current CSS Background</h2>
-    <input class="color1" type="color" name="color1" value=#f2fac0>
-    <input class="color2" type="color" name="color2" value="#bbe9f7">
-    <h3></h3>
+    <h1>Color Gradient Generator</h1>
+    <h2>Select Colors</h2>
+    <input type='text' id='color1' class='color-picker1 pckButton' value='#55D078' style='background-color: rgb(85, 208, 120)'></input>
+    <input type='text' id='color2' class='color-picker2 pckButton' value='#0012C0' style='background-color: rgb(0, 18, 192)'></input>
+    <h3>Middle Points</h3>
+    <label style='padding-left: 19px'>
+      <input type="radio" class='radio' name="options" checked/>
+      <span class='span'>0</span>
+    </label>
+    <label>
+      <input type="radio" class='radio' name="options"/>
+      <span class='span'>1</span>
+    </label>
+    <label>
+      <input type="radio" class='radio' name="options"/>
+      <span class='span'>3</span>
+    </label>
+    <p id='warnMsg'>Adjusting the percentage by dragging is disabled while on this setting</p>
+    <h4>CSS Snippet:</h4>
+    <h4 id="code">background: linear-gradient(90deg, rgb(85, 208, 120), 50%, rgb(0, 18, 192))</h4>
+    <br><br>
     <div draggable="true "id="mouse-icon" class="mouse-transition">
-      <div id="scroll-wheel">
-      </div>
+      <div id="scroll-wheel"></div>
     </div>
-
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr/dist/pickr.min.js"></script>
     <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
