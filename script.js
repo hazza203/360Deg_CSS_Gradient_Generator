@@ -120,7 +120,13 @@ function getMidPoints(){
   )
   //only one midpoint
   if(radioBtns[1].checked){
-    body.style.background = `linear-gradient( ${deg}deg, ${color1.value}, ${pct*0.7}%, rgb(${r},${g},${b}), ${pct*1.3}%, ${color2.value})`;
+    let pct1 = (pct - 33) < 0 ? 1 : (pct - 33)
+    let pct2 = pct < 33 ? 34 : pct
+    body.style.background = `linear-gradient( ${deg}deg, ${color1.value}, ${pct1}%, rgb(${r},${g},${b}), ${pct2}%, ${color2.value})`;
+    // if(pct2 < 33.3){
+    //   body.style.background = `linear-gradient( ${deg}deg, ${color1.value}, 0.1%, rgb(${r},${g},${b}), 33.3%, ${color2.value})`;
+
+    // }
   } //Three midpoints, calculate between each colour and the last mid point
   else if(radioBtns[2].checked){
     let [r2, g2, b2] = emphasis_diminish(
