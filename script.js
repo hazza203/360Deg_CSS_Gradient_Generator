@@ -37,7 +37,7 @@ window.addEventListener("resize", resizeEvent);
 //Setting up Color pickers
 const pickr1 = new Pickr({
     el: '.color-picker1',
-    default: 'rgb(85, 208, 120)',
+    default: 'rgb(209, 122, 255)',
     comparison: true,
     useAsButton: true,
     defaultRepresentation: 'HEX',
@@ -55,12 +55,11 @@ const pickr1 = new Pickr({
         }
     }
 });
-
 const pickr2 = new Pickr({
     el: '.color-picker2',
     comparison: true,
     useAsButton: true,
-    default: 'rgb(0, 18, 192)',
+    default: 'rgb(94, 255, 168)',
     defaultRepresentation: 'HEX',
     components: {
         preview: true,
